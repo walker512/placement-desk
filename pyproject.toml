@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "placement-desk"
+version = "0.1.0"
+description = "Bounded declared deployment placement comparison"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "walker512"}]
+[project.scripts]
+placement-desk = "placement_desk.__main__:main"
+[tool.setuptools.packages.find]
+include = ["placement_desk*"]
