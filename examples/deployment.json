@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "candidate_limit": 20000,
+  "failure_modes": [
+    "node",
+    "zone"
+  ],
+  "workloads": [
+    {
+      "id": "inference",
+      "replicas": 2,
+      "resources": {
+        "cpu_millis": 2000,
+        "ram_mib": 4096,
+        "gpu_units": 1
+      },
+      "accelerator": "synthetic-gpu",
+      "spread": "zone"
+    }
+  ],
+  "plans": [
+    {
+      "id": "two-zones",
+      "nodes": [
+        {
+          "id": "a",
+          "zone": "zone-a",
+          "capacity": {
+            "cpu_millis": 4000,
+            "ram_mib": 8192,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic-gpu"
+        },
+        {
+          "id": "b",
+          "zone": "zone-b",
+          "capacity": {
+            "cpu_millis": 4000,
+            "ram_mib": 8192,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic-gpu"
+        }
+      ]
+    },
+    {
+      "id": "three-zones",
+      "nodes": [
+        {
+          "id": "a",
+          "zone": "zone-a",
+          "capacity": {
+            "cpu_millis": 4000,
+            "ram_mib": 8192,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic-gpu"
+        },
+        {
+          "id": "b",
+          "zone": "zone-b",
+          "capacity": {
+            "cpu_millis": 4000,
+            "ram_mib": 8192,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic-gpu"
+        },
+        {
+          "id": "c",
+          "zone": "zone-c",
+          "capacity": {
+            "cpu_millis": 4000,
+            "ram_mib": 8192,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic-gpu"
+        }
+      ]
+    }
+  ]
+}
