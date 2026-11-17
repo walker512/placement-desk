@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "candidate_limit": 20000,
+  "failure_modes": [
+    "node"
+  ],
+  "workloads": [
+    {
+      "id": "alpha",
+      "replicas": 1,
+      "resources": {
+        "cpu_millis": 1,
+        "ram_mib": 1,
+        "gpu_units": 1
+      },
+      "accelerator": "synthetic",
+      "spread": "none"
+    },
+    {
+      "id": "beta",
+      "replicas": 1,
+      "resources": {
+        "cpu_millis": 1,
+        "ram_mib": 1,
+        "gpu_units": 1
+      },
+      "accelerator": "synthetic",
+      "spread": "none"
+    }
+  ],
+  "plans": [
+    {
+      "id": "local",
+      "nodes": [
+        {
+          "id": "a",
+          "zone": "za",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "b",
+          "zone": "zb",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "c",
+          "zone": "zc",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "nodes": [
+        {
+          "id": "a",
+          "zone": "za",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "b",
+          "zone": "zb",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "c",
+          "zone": "zc",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        }
+      ]
+    },
+    {
+      "id": "hybrid",
+      "nodes": [
+        {
+          "id": "a",
+          "zone": "za",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "b",
+          "zone": "zb",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        },
+        {
+          "id": "c",
+          "zone": "zc",
+          "capacity": {
+            "cpu_millis": 2,
+            "ram_mib": 2,
+            "gpu_units": 1
+          },
+          "accelerator": "synthetic"
+        }
+      ]
+    }
+  ]
+}
