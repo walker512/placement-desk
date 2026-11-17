@@ -27,7 +27,7 @@ Two inference replicas each require 2,000 CPU millicores, 4,096 MiB RAM and one 
 | Two nodes in two zones | Feasible | Infeasible in model | Infeasible in model |
 | Three nodes in three zones | Feasible | Feasible in model | Feasible in model |
 
-The labels and numbers are **synthetic declarations**, not measurements of an actual GPU model. The extra node is not automatically a deployment recommendation: price, latency, data consistency and recovery time are absent.
+The labels and numbers are **synthetic declarations**, not measurements of an actual GPU model. The extra node is not automatically a deployment recommendation: price, latency, data consistency and recovery time are absent from this packing-only example. The optional context workflow below adds human-declared reservation and cross-site charges, not real prices or recovery timing.
 
 To demonstrate a limited search:
 
@@ -125,8 +125,14 @@ This is not AI Cost billing comparison or Component Swap interface-compatibility
 
 ## Validation
 
-31 public synthetic tests on Linux/Python 3.12 include 250 independently enumerated small placement problems, fragmentation despite sufficient aggregate resources, accelerator matching, node/zone spreading, single-loss cases, budget exhaustion, feasible witness validation, finite shape bounds, CLI gates, exact UTF-8/LF outputs, source-byte preservation, bundle tampering and bounded file handling.
+54 public synthetic tests passed on Linux/Python 3.12 (zero skipped). The unchanged original 31 tests include 250 independently enumerated small placement problems, fragmentation despite sufficient aggregate resources, accelerator matching, node/zone spreading, single-loss cases, budget exhaustion, feasible witness validation, finite shape bounds, CLI gates, exact UTF-8/LF outputs, source-byte preservation, bundle tampering and bounded file handling.
+
+The 23 added context tests cover the actual CLI bundle loop, failure-dependent directed flows, unknown costs, exact rational products and sums, input binding, allowlist boundaries, output preflight and tampering.
 
 Windows/macOS, hosted CI and real hardware deployments have not been run. Symlink/FIFO cases may skip on unsupported platforms; skips are not passes. There is no browser UI. Synthetic correctness is not real-user adoption, calibrated capacity planning or proof of failover readiness.
 
 MIT license, original code and synthetic examples by walker512. No competitor source or private infrastructure data is included.
+
+## Optional declared deployment context
+
+The additive [context workflow](docs/CONTEXT.md) binds human-supplied site/region mappings, fixed reservation rates, directed per-replica traffic and allowed destination pairs to the exact placement input. It reuses the solver's healthy/failure witnesses, exposes unknown costs and boundaries, and exports a recomputable bundle with plain-text architecture. It does not find optimal placement, infer current pricing, establish compliance or estimate complete total cost. The original model and CLI above remain unchanged.
