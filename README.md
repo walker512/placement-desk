@@ -125,14 +125,62 @@ This is not AI Cost billing comparison or Component Swap interface-compatibility
 
 ## Validation
 
-54 public synthetic tests passed on Linux/Python 3.12 (zero skipped). The unchanged original 31 tests include 250 independently enumerated small placement problems, fragmentation despite sufficient aggregate resources, accelerator matching, node/zone spreading, single-loss cases, budget exhaustion, feasible witness validation, finite shape bounds, CLI gates, exact UTF-8/LF outputs, source-byte preservation, bundle tampering and bounded file handling.
+The historical 0.2 context suite had 54 public synthetic tests passing on Linux/Python 3.12 (zero skipped). The unchanged original 31 tests include 250 independently enumerated small placement problems, fragmentation despite sufficient aggregate resources, accelerator matching, node/zone spreading, single-loss cases, budget exhaustion, feasible witness validation, finite shape bounds, CLI gates, exact UTF-8/LF outputs, source-byte preservation, bundle tampering and bounded file handling.
 
 The 23 added context tests cover the actual CLI bundle loop, failure-dependent directed flows, unknown costs, exact rational products and sums, input binding, allowlist boundaries, output preflight and tampering.
 
-Windows/macOS, hosted CI and real hardware deployments have not been run. Symlink/FIFO cases may skip on unsupported platforms; skips are not passes. There is no browser UI. Synthetic correctness is not real-user adoption, calibrated capacity planning or proof of failover readiness.
+Windows/macOS, hosted CI and real hardware deployments have not been run. Symlink/FIFO cases may skip on unsupported platforms; skips are not passes. That release had no browser UI; the new static architecture report is described below. Synthetic correctness is not real-user adoption, calibrated capacity planning or proof of failover readiness.
 
 MIT license, original code and synthetic examples by walker512. No competitor source or private infrastructure data is included.
 
 ## Optional declared deployment context
 
 The additive [context workflow](docs/CONTEXT.md) binds human-supplied site/region mappings, fixed reservation rates, directed per-replica traffic and allowed destination pairs to the exact placement input. It reuses the solver's healthy/failure witnesses, exposes unknown costs and boundaries, and exports a recomputable bundle with plain-text architecture. It does not find optimal placement, infer current pricing, establish compliance or estimate complete total cost. The original model and CLI above remain unchanged.
+
+## Offline architecture diagrams
+
+The independent visual-bundle command adds a static `index.html` to the five
+unchanged context-bundle files. No server, JavaScript, remote fonts, API keys or
+cloud services are needed by the generated report.
+
+```sh
+python -m placement_desk.visualize analyze examples/context-deployment.json examples/context-assumptions.json --out visual-review
+python -m placement_desk.visualize verify visual-review
+```
+
+Open the generated HTML locally. Jump between local/cloud/hybrid plans and expand
+individual failure cases using the native disclosure controls (keyboard Enter
+works). Each case shows all declared nodes, zones and sites, removed nodes,
+assignment counts, directed node-pair curves and a precise per-flow table. Long
+SVG labels are abbreviated; the full inventory table and replica JSON retain exact
+identifiers. Curves aggregate multiple flows between the same ordered node pair;
+the table records individual directions, bytes, boundary checks and costs. Curves
+may overlap in dense examples, so use that table rather than treating line layout
+as physical topology. No placement witness means no inferred traffic or combined
+cost; unassigned inventory is not falsely displayed as a successful placement.
+
+The original `placement_desk.context verify` still expects its five-file format.
+Use `placement_desk.visualize verify` for the six-file visual bundle. It recomputes
+all files including HTML, not just a JSON receipt. Core placement and context
+results remain byte-for-byte unchanged. Recomputability does not authenticate
+sources or prove physical failover, network availability, compliance or cost.
+This is an inspectable architecture report, not a drag-and-drop planning editor.
+
+New visual bundles are exclusively created with directory/file modes 0700/0600 on
+POSIX, subject to stricter umask. Existing destinations are never overwritten;
+partial I/O failures may leave a private incomplete directory that verification
+rejects. Legacy outputs are not retroactively protected. Trusted parent directories
+are required; hostile same-account replacement, ACLs and encryption are not covered.
+
+Visual candidate validation: **68 tests passed, zero skips**, Linux/Python 3.12
+(54 previous plus 14 visual tests). Coverage includes unchanged core outputs,
+one SVG per case with unique IDs, flow aggregation/self-loops, unknown/no-flow
+semantics, HTML escaping, tampering of every member, bounds, private creation,
+failed writes and real CLI commands. Builder Chromium desktop acceptance checked
+plan navigation, a hybrid node-loss disclosure, removed-node styling, the directed
+local-to-cloud arrow, exact boundary/cost table and keyboard collapse. No mobile,
+other-browser, screen-reader or Windows/macOS runtime claim is made. No real
+infrastructure was accessed or deployed. This increment does not complete the
+original project's performance-calibration or real-world validation requirements.
+
+An offline-built wheel installed in a fresh virtual environment successfully verified the six-file demo outside the source tree. Python 3.11 grammar was checked; the actual runtime used was Python 3.12.
